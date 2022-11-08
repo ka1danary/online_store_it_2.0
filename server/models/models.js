@@ -77,7 +77,7 @@ const Product_order_rel = sequelize.define( 'product_order_rel', {
     }
 )
 
-const images = sequelize.define( 'images', {
+const Images = sequelize.define( 'images', {
     id : {type : DataTypes.INTEGER, primaryKey : true, autoIncrement : true, allowNull : false},
     file_url : {type : DataTypes.STRING, allowNull : false}
     }
@@ -94,4 +94,4 @@ const Gallery_image_rel = sequelize.define( 'gallery_image_rel', {
     }
 )
 
-module.exports = {User, Product}
+module.exports = {User, Product, Orders, Brand, Security, Address_user, Product_color_self_rel, Product_order_rel, Images, Gallery, Gallery_image_rel}
