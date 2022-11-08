@@ -64,27 +64,33 @@ const Address_user = sequelize.define( 'address_user', {
 )
 
 const Product_color_self_rel = sequelize.define( 'product_color_self_rel', {
-
+    id : {type : DataTypes.INTEGER, primaryKey : true, autoIncrement : true, allowNull : false},
+    product_id_first : {type : DataTypes.INTEGER, allowNull : false},
+    product_id_second : {type : DataTypes.INTEGER, allowNull : false},
     }
 )
 
 const Product_order_rel = sequelize.define( 'product_order_rel', {
-
+    id : {type : DataTypes.INTEGER, primaryKey : true, autoIncrement : true, allowNull : false},
+    product_id : {type : DataTypes.INTEGER, allowNull : false},
+    order_id : {type : DataTypes.INTEGER, allowNull : false},
     }
 )
 
 const images = sequelize.define( 'images', {
-
+    id : {type : DataTypes.INTEGER, primaryKey : true, autoIncrement : true, allowNull : false},
+    file_url : {type : DataTypes.STRING, allowNull : false}
     }
 )
 
 const Gallery = sequelize.define( 'gallery', {
-
+    id : {type : DataTypes.INTEGER, primaryKey : true, autoIncrement : true, allowNull : false}
     }
 )
 
 const Gallery_image_rel = sequelize.define( 'gallery_image_rel', {
-
+    id : {type : DataTypes.INTEGER, primaryKey : true, autoIncrement : true, allowNull : false},
+    image_id : {type : DataTypes.INTEGER, allowNull : false}
     }
 )
 
