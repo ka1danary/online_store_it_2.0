@@ -94,4 +94,5 @@ const Gallery_image_rel = sequelize.define( 'gallery_image_rel', {
     }
 )
 
+
 module.exports = {User, Product, Orders, Brand, Security, Address_user, Product_color_self_rel, Product_order_rel, Images, Gallery, Gallery_image_rel}

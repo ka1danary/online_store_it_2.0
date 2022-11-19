@@ -1,12 +1,31 @@
-const {Sequelize} = require('sequelize')
+import Sequelize from 'sequelize';
+import env from './env.config';
 
-module.exports = new Sequelize(
-    process.env.DB_NAME,
-    process.env.DB_USER,
-    process.env.DB_PASSWORD,
-    {
-        dialect : 'postgres',
-        host : process.env.DB_HOST,
-        port : process.env.DB_PORT
+import { createNamespace } from 'cls-hooked';
+
+export const namespace = createNamespace('ns');
+Sequelize.useCLS(namespace);
+
+const db = new Sequelize({
+    dialect: env.DB_TYPE,
+    logging: env.DB_LOG ? console.log : false,
+    host: env.DB_HOSTNAME,
+    username: env.DB_USERNAME,
+    password: `${env.DB_PASSWORD}`,
+    port: env.DB_PORT,
+    database: env.DB_DATABASE,
+    timezone: '+00:00',
+    define: { // чтоб не создавать два лишник поля в таблице
+        timestamps: false
     }
-)
+});
+
+export default db;
+
+export function openConnection() {
+    return db.authenticate();
+}
+
+export function closeConnection() {
+    return db.close();
+}
